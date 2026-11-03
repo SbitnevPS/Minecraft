@@ -3,9 +3,9 @@ loaderVersion="[47,)"
 license="MIT"
 [[mods]]
 modId="mechanicaluniverse"
-version="0.1.0"
+version="0.3.0"
 displayName="Mechanical Universe"
-description='''Prototype of engineering blocks and fluid containers.'''
+description='''800 construction blocks in nine creative tabs, plus resource factories and liquid generators.'''
 [[dependencies.mechanicaluniverse]]
 modId="forge"
 mandatory=true
