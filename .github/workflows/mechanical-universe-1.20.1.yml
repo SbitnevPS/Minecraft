@@ -1,0 +1,35 @@
+name: Build Mechanical Universe Forge 1.20.1
+on:
+  push:
+    branches:
+      - mechanical-universe-forge-1.20.1
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Gradle 8.8
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.8'
+      - name: Generate mod resources
+        working-directory: Mechanical-Universe
+        run: python3 prepare_800.py
+      - name: Build release JAR
+        working-directory: Mechanical-Universe
+        run: gradle build --no-daemon --stacktrace
+      - name: Upload ready JAR
+        uses: actions/upload-artifact@v4
+        with:
+          name: MechanicalUniverse-Forge-1.20.1
+          path: Mechanical-Universe/build/libs/*.jar
+          if-no-files-found: error
