@@ -99,5 +99,28 @@ write(assets/"models/item/eight_bucket.json",{"parent":"minecraft:item/generated
 for language in ("en_us","ru_ru"):
  names={f"block.{namespace}.{name}":name.replace("_"," ").title() for name in part_names+["infinite_lava_generator","infinite_water_generator","infinite_emerald_factory","infinite_diamond_factory"]}
  names[f"item.{namespace}.eight_bucket"]="Ведро на восемь порций" if language=="ru_ru" else "Eight Bucket"
+ tab_translations={
+  "en_us":{
+   "main":"Mechanical Universe - Basic Parts",
+   "rotation":"Mechanical Universe - Gears and Shafts",
+   "engines":"Mechanical Universe - Engines and Machines",
+   "fluids":"Mechanical Universe - Hydraulics and Pneumatics",
+   "electronics":"Mechanical Universe - Power and Control",
+   "automation":"Mechanical Universe - Automation and Robotics",
+   "transport":"Mechanical Universe - Vehicles and Construction",
+   "processing":"Mechanical Universe - Chemistry and Fluids",
+   "structures":"Mechanical Universe - Structural Parts"},
+  "ru_ru":{
+   "main":"Mechanical Universe — Основные детали",
+   "rotation":"Mechanical Universe — Передачи и валы",
+   "engines":"Mechanical Universe — Двигатели и станки",
+   "fluids":"Mechanical Universe — Гидравлика и пневматика",
+   "electronics":"Mechanical Universe — Электрика и управление",
+   "automation":"Mechanical Universe — Автоматизация",
+   "transport":"Mechanical Universe — Техника и строительство",
+   "processing":"Mechanical Universe — Химия и жидкости",
+   "structures":"Mechanical Universe — Конструкции"}
+ }
+ names.update({f"itemGroup.{namespace}.{key}":val for key,val in tab_translations[language].items()})
  write(assets/"lang"/(language+".json"),names)
 print(f"Generated {len(part_names)} construction blocks, 4 source/factory blocks, and resources")
