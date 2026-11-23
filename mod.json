@@ -1,0 +1,11 @@
+{
+  "geode": "6.0.0-beta.2",
+  "gd": {
+    "android": "2.2091"
+  },
+  "id": "pavel.icon_color_unlock_pack",
+  "name": "Icon & Color Unlock Pack",
+  "version": "1.0.0",
+  "developer": "Community Project",
+  "description": "Unlocks icon and color selection and provides a compact Tools menu with remove."
+}
