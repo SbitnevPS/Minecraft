@@ -12,10 +12,10 @@ bool unlockEnabled() {
 }
 }
 
-class UnlockToolsPopup : public Popup<> {
+class UnlockToolsPopup : public geode::Popup {
 protected:
     CCLabelBMFont* m_status = nullptr;
-    bool setup() override {
+    void setupUI() {
         this->setTitle("Icon Pack Tools");
         const auto size = m_mainLayer->getContentSize();
         auto caption = CCLabelBMFont::create("All icons and colors", "goldFont.fnt");
@@ -49,7 +49,6 @@ protected:
         hint->setScale(.62f);
         hint->setPosition({size.width / 2.f, 25.f});
         m_mainLayer->addChild(hint);
-        return true;
     }
 
     void onToggle(CCObject*) {
@@ -82,7 +81,8 @@ protected:
 public:
     static UnlockToolsPopup* create() {
         auto* popup = new UnlockToolsPopup();
-        if (popup && popup->initAnchored(310.f, 184.f)) {
+        if (popup && popup->init(310.f, 184.f)) {
+            popup->setupUI();
             popup->autorelease();
             return popup;
         }
